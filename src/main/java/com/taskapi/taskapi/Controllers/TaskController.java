@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.taskapi.taskapi.DTOs.TaskDTO;
 import com.taskapi.taskapi.Services.TaskService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class TaskController {
 	private TaskService service;
@@ -33,7 +35,7 @@ public class TaskController {
 	}
 
 	@PostMapping("/tasks")
-	public ResponseEntity<TaskDTO> addTask(@RequestBody TaskDTO task) {
+	public ResponseEntity<TaskDTO> addTask(@Valid @RequestBody TaskDTO task) {
 		return new ResponseEntity<>(service.addTask(task), HttpStatus.CREATED); 
 	}
 

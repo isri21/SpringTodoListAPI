@@ -1,9 +1,7 @@
 package com.taskapi.taskapi.DTOs;
-
 import java.time.LocalDate;
-
 import com.taskapi.taskapi.Models.Task;
-
+import jakarta.validation.constraints.FutureOrPresent;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +13,8 @@ public class TaskDTO {
 	private int id;
 	private String title;
 	private String description;
+
+	@FutureOrPresent
 	private LocalDate dueDate;
 	private String status;
 
