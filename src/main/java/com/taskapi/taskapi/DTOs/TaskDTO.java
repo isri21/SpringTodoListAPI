@@ -8,22 +8,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class TaskDTO {
 	private int id;
 	private String title;
 	private String description;
-	private LocalDate due_date;
+	private LocalDate dueDate;
 	private String status;
 
 	public TaskDTO(Task task) {
 		this.id = task.getId();
 		this.title = task.getTitle();
 		this.description = task.getDescription();
-		this.due_date = task.getDueDate();
+		this.dueDate = task.getDueDate();
 		this.status = task.getStatus();
 	}
 }

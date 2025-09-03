@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.taskapi.taskapi.DTOs.TaskDTO;
+import com.taskapi.taskapi.Models.Task;
 import com.taskapi.taskapi.Repositories.TaskRepository;
 
 @Service
@@ -19,5 +20,46 @@ public class TaskService {
 					.stream()
 					.map(n -> new TaskDTO(n))
 					.toList();
+	}
+
+	public TaskDTO getTask(int id) {
+		Task task = repo.findById(id).get();
+		return new TaskDTO(task);
+		
+	}
+
+	public TaskDTO addTask(TaskDTO taskDto) {
+		Task newTask = new Task();
+		newTask.setTitle(taskDto.getTitle());
+		newTask.setDescription(taskDto.getDescription());
+		newTask.setDueDate(taskDto.getDueDate());
+		newTask.setStatus(taskDto.getStatus());
+		newTask.setCreatedAt(java.time.LocalDate.now());
+
+		Task saved = repo.save(newTask);
+
+		return new TaskDTO(saved);
+		
+		
+	}
+
+	public TaskDTO updateTask(TaskDTO updatedTask, int id) {
+
+		Task task = repo.findById(id).get();
+
+		task.setTitle(updatedTask.getTitle());
+		task.setDescription(updatedTask.getDescription());
+		task.setDueDate(updatedTask.getDueDate());
+		task.setStatus(updatedTask.getStatus());
+		task.setCreatedAt(java.time.LocalDate.now());
+
+		Task saved = repo.save(task);
+
+		return new TaskDTO(saved);
+
+	}
+
+	public void deleteTask(int id) {
+		repo.deleteById(id);
 	}
 }
