@@ -2,6 +2,7 @@ package com.taskapi.taskapi.DTOs;
 import java.time.LocalDate;
 import com.taskapi.taskapi.Models.Task;
 import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,9 +15,11 @@ public class TaskDTO {
 	private int id;
 
 	@NotNull
+	@NotBlank
 	private String title;
 
 	@NotNull
+	@NotBlank
 	private String description;
 
 	@FutureOrPresent
