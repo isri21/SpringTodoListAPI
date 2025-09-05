@@ -1,4 +1,5 @@
 package com.taskapi.taskapi.Services;
+
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.taskapi.taskapi.DTOs.TaskDTO;
@@ -17,15 +18,15 @@ public class TaskService {
 
 	public List<TaskDescriptionDTO> getTasks() {
 		return repo.findAll()
-					.stream()
-					.map(n -> new TaskDescriptionDTO(n))
-					.toList();
+				.stream()
+				.map(n -> new TaskDescriptionDTO(n))
+				.toList();
 	}
 
 	public TaskDTO getTask(int id) {
-		Task task = repo.findById(id).orElseThrow(() -> new TaskNotFoundException());		
+		Task task = repo.findById(id).orElseThrow(() -> new TaskNotFoundException());
 		return new TaskDTO(task);
-		
+
 	}
 
 	public TaskDTO addTask(TaskDTO taskDto) {
@@ -39,8 +40,7 @@ public class TaskService {
 		Task saved = repo.save(newTask);
 
 		return new TaskDTO(saved);
-		
-		
+
 	}
 
 	public TaskDTO updateTask(TaskDTO updatedTask, int id) {
