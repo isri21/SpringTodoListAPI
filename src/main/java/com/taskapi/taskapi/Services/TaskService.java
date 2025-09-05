@@ -2,6 +2,7 @@ package com.taskapi.taskapi.Services;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import com.taskapi.taskapi.DTOs.TaskDTO;
+import com.taskapi.taskapi.DTOs.TaskDescriptionDTO;
 import com.taskapi.taskapi.Models.Task;
 import com.taskapi.taskapi.Repositories.TaskRepository;
 import com.taskapi.taskapi.Exceptions.TaskNotFoundException;
@@ -14,10 +15,10 @@ public class TaskService {
 		this.repo = repo;
 	}
 
-	public List<TaskDTO> getTasks() {
+	public List<TaskDescriptionDTO> getTasks() {
 		return repo.findAll()
 					.stream()
-					.map(n -> new TaskDTO(n))
+					.map(n -> new TaskDescriptionDTO(n))
 					.toList();
 	}
 

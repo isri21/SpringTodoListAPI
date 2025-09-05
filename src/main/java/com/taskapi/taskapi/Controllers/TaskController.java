@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.taskapi.taskapi.DTOs.TaskDTO;
+import com.taskapi.taskapi.DTOs.TaskDescriptionDTO;
 import com.taskapi.taskapi.Services.TaskService;
 
 import jakarta.validation.Valid;
@@ -25,7 +26,7 @@ public class TaskController {
 	}
 
 	@GetMapping("/tasks")
-	public ResponseEntity<List<TaskDTO>> getTasks() {
+	public ResponseEntity<List<TaskDescriptionDTO>> getTasks() {
 		return new ResponseEntity<>(service.getTasks(), HttpStatus.OK);
 	}
 
