@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS TASK (
 	id SERIAL PRIMARY KEY,
 	title VARCHAR(50) NOT NULL,
-	description TEXT,
+	description TEXT NOT NULL,
 	due_date DATE NOT NULL,
-	status VARCHAR(10),
+	status VARCHAR(10) NOT NULL,
 	created_at DATE DEFAULT NOW()
 );

@@ -1,11 +1,10 @@
 package com.taskapi.taskapi.Services;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import com.taskapi.taskapi.DTOs.TaskDTO;
 import com.taskapi.taskapi.Models.Task;
 import com.taskapi.taskapi.Repositories.TaskRepository;
+import com.taskapi.taskapi.Exceptions.TaskNotFoundException;
 
 @Service
 public class TaskService {
@@ -23,7 +22,7 @@ public class TaskService {
 	}
 
 	public TaskDTO getTask(int id) {
-		Task task = repo.findById(id).get();
+		Task task = repo.findById(id).orElseThrow(() -> new TaskNotFoundException());		
 		return new TaskDTO(task);
 		
 	}
@@ -45,7 +44,7 @@ public class TaskService {
 
 	public TaskDTO updateTask(TaskDTO updatedTask, int id) {
 
-		Task task = repo.findById(id).get();
+		Task task = repo.findById(id).orElseThrow(() -> new TaskNotFoundException());
 
 		task.setTitle(updatedTask.getTitle());
 		task.setDescription(updatedTask.getDescription());
@@ -60,6 +59,7 @@ public class TaskService {
 	}
 
 	public void deleteTask(int id) {
-		repo.deleteById(id);
+		Task task = repo.findById(id).orElseThrow(() -> new TaskNotFoundException());
+		repo.delete(task);
 	}
 }

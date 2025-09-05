@@ -40,7 +40,7 @@ public class TaskController {
 	}
 
 	@PutMapping("/tasks/{id}")
-	public ResponseEntity<TaskDTO> getTask(@PathVariable int id, @RequestBody TaskDTO task) {
+	public ResponseEntity<TaskDTO> getTask(@PathVariable int id, @Valid  @RequestBody TaskDTO task) {
 		System.out.println(task);
 		return new ResponseEntity<>(service.updateTask(task, id), HttpStatus.OK);
 	}
