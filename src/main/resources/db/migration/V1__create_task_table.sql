@@ -3,6 +3,5 @@ CREATE TABLE IF NOT EXISTS TASK (
 	title VARCHAR(50) NOT NULL,
 	description TEXT NOT NULL,
 	due_date DATE NOT NULL,
-	status VARCHAR(10) NOT NULL,
 	created_at DATE DEFAULT NOW()
 );

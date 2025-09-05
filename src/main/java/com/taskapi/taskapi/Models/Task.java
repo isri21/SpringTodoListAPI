@@ -27,9 +27,6 @@ public class Task {
 	@Column(name = "due_date")
 	private LocalDate dueDate;
 
-	@Column(name = "status")
-	private String status;
-
 	@Column(name = "created_at")
 	private LocalDate createdAt;
 }

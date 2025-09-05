@@ -26,14 +26,10 @@ public class TaskDTO {
 	@NotNull
 	private LocalDate dueDate;
 
-	@NotNull
-	private String status;
-
 	public TaskDTO(Task task) {
 		this.id = task.getId();
 		this.title = task.getTitle();
 		this.description = task.getDescription();
 		this.dueDate = task.getDueDate();
-		this.status = task.getStatus();
 	}
 }

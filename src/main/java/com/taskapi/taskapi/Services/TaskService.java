@@ -40,8 +40,7 @@ public class TaskService {
 		Task newTask = new Task();
 		newTask.setTitle(taskDto.getTitle());
 		newTask.setDescription(taskDto.getDescription());
-		newTask.setDueDate(taskDto.getDueDate());
-		newTask.setStatus(taskDto.getStatus());
+		newTask.setDueDate(taskDto.getDueDate());;
 		newTask.setCreatedAt(java.time.LocalDate.now());
 
 		Task saved = repo.save(newTask);
@@ -57,7 +56,6 @@ public class TaskService {
 		task.setTitle(updatedTask.getTitle());
 		task.setDescription(updatedTask.getDescription());
 		task.setDueDate(updatedTask.getDueDate());
-		task.setStatus(updatedTask.getStatus());
 		task.setCreatedAt(java.time.LocalDate.now());
 
 		Task saved = repo.save(task);
