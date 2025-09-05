@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.taskapi.taskapi.DTOs.TaskDTO;
@@ -30,6 +31,10 @@ public class TaskController {
 	@GetMapping("/tasks")
 	public ResponseEntity<List<TaskDescriptionDTO>> getTasks() {
 		return new ResponseEntity<>(service.getTasks(), HttpStatus.OK);
+	}
+	@GetMapping("/tasks/search")
+	public ResponseEntity<List<TaskDescriptionDTO>> getTaskByTitle(@RequestParam(required = false) String title) {
+		return new ResponseEntity<>(service.getTaskByTitle(title), HttpStatus.OK);
 	}
 
 	@GetMapping("/tasks/{id}")

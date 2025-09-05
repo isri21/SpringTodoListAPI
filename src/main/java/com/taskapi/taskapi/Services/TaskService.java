@@ -23,6 +23,13 @@ public class TaskService {
 				.toList();
 	}
 
+	public List<TaskDescriptionDTO> getTaskByTitle(String title) {
+		return repo.findByTitleIgnoreCaseContaining(title)
+				.stream()
+				.map(n -> new TaskDescriptionDTO(n))
+				.toList();
+	}
+
 	public TaskDTO getTask(int id) {
 		Task task = repo.findById(id).orElseThrow(() -> new TaskNotFoundException());
 		return new TaskDTO(task);
